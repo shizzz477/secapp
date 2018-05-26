@@ -1,0 +1,6 @@
+Flask
+request
+Flask-WTF
+bcrypt
+Flask-login
+wtforms
