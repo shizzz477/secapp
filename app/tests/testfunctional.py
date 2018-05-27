@@ -61,7 +61,6 @@ class TestApplicationFuctional(unittest.TestCase):
         securedb.clear()
 
     def register(self, username, password):
-        #  data = RegisterForm(username=username, password=password),
         return self.app.post(
             '/register',
             data=dict(password=password, username=username),
