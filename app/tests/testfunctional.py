@@ -1,5 +1,14 @@
+################################################################
+#
+# Functional testing modules for the web application
+# purpose of these tests is to focus on the functional aspects of
+# application
+#
+###################################################################
 import unittest
-from app.forms import strongpasswordcheck, RegisterForm
+
+from wtforms import ValidationError
+from app.forms import strongpasswordcheck
 from collections import namedtuple
 from app import securedb, app
 
@@ -32,11 +41,13 @@ class TestApplicationFuctional(unittest.TestCase):
     def testPasswordStrengthCheck(self):
         field = namedtuple("field", "form data")
         f = field("form","mypasswordddddddddddd")
-        self.assertFalse(strongpasswordcheck(None,f))
-        f = field("form", "Qgu&9ijrf")
-        self.assertTrue(strongpasswordcheck(None, f))
-        f = field("form", "Q!W@E#4q")
-        self.assertFalse(strongpasswordcheck(None, f))
+        with self.assertRaises(ValidationError):
+            strongpasswordcheck(None,f)
+        f1 = field("form", "Qgu&9ijrf")
+        self.assertIsNone(strongpasswordcheck(None, f1))
+        f2 = field("form", "Q!W@E#4q")
+        with self.assertRaises(ValidationError):
+            strongpasswordcheck(None, f2)
 
     def testpasswordencryption(self):
         securedb.adduser("Marc","Qgu&9ijrf")

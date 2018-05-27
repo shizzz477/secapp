@@ -1,9 +1,15 @@
+"""
+    routes.py
+
+    this module is responsible for routing all requests in the application
+"""
 from flask import flash, redirect, url_for, render_template, request, json
 from app import app, securedb
 from app.forms import LoginForm, RegisterForm
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """ Form for registering a user """
     form = RegisterForm()
     if form.validate_on_submit():
         securedb.adduser(form.username.data,form.password.data)
@@ -13,6 +19,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Form for logging in a user """
     form = LoginForm()
     if form.validate_on_submit():
         u = json.dumps({'username': form.username.data})
@@ -25,6 +32,7 @@ def login():
 @app.route('/')
 @app.route('/index')
 def index():
+    """ router for main page """
     sessionuser = request.args.get('user')
     # protect the username parameter
     if not sessionuser or not securedb.userexists(sessionuser):

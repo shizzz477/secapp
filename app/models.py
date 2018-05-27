@@ -1,5 +1,4 @@
-# from app import login, securedb
-#
-# @login.user_loader
-# def load_user(id):
-#     return id
+"""
+    models.py
+    this module reserved for implementation of a database
+"""
