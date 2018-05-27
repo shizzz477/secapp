@@ -31,10 +31,7 @@ def index():
         sessionuser = {'username': 'Guest'}
         messages = [
             {
-                'body': 'Welcome to the Super Secure Application'
-            },
-            {
-                'body': 'Please Register and sign in'
+                'body': 'Welcome to the Super Secure Application\nPlease Register and sign in'
             }
         ]
     else:
