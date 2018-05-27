@@ -26,7 +26,8 @@ def login():
 @app.route('/index')
 def index():
     sessionuser = request.args.get('user')
-    if not sessionuser:
+    # protect the username parameter
+    if not sessionuser or not securedb.userexists(sessionuser):
         sessionuser = {'username': 'Guest'}
         messages = [
             {
@@ -37,7 +38,7 @@ def index():
             }
         ]
     else:
-         sessionuser = json.loads(sessionuser)
-         messages = [{'body': "You are logged in!!!"}]
+        sessionuser = json.loads(sessionuser)
+        messages = [{'body': "You are logged in!!!"}]
 
     return render_template('index.html', title='Home', user=sessionuser, msgs=messages)

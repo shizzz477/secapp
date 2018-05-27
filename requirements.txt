@@ -4,3 +4,5 @@ Flask-WTF
 bcrypt
 Flask-login
 wtforms
+ConfigParser
+python-owasp-zap-v2.4
