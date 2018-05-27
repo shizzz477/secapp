@@ -3,9 +3,16 @@
 
     this module is responsible for routing all requests in the application
 """
-from flask import flash, redirect, url_for, render_template, request, json, send_from_directory
+from datetime import timedelta
+
+from flask import flash, redirect, url_for, render_template, request, json, send_from_directory, session
 from app import app, securedb
 from app.forms import LoginForm, RegisterForm
+
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=5)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
