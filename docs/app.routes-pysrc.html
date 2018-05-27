@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>app.routes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="app-module.html">Package&nbsp;app</a> ::
+        Module&nbsp;routes
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="app.routes-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="app.routes-module.html">Module app.routes</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">    routes.py</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">    this module is responsible for routing all requests in the application</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">flask</tt> <tt class="py-keyword">import</tt> <tt class="py-name">flash</tt><tt class="py-op">,</tt> <tt class="py-name">redirect</tt><tt class="py-op">,</tt> <tt class="py-name">url_for</tt><tt class="py-op">,</tt> <tt class="py-name">render_template</tt><tt class="py-op">,</tt> <tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-name">json</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package app=app-module.html,Variable app.app=app-module.html#app"><a title="app
+app.app" class="py-name" href="#" onclick="return doclink('link-0', 'app', 'link-0');">app</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="app
+app.app" class="py-name" href="#" onclick="return doclink('link-1', 'app', 'link-0');">app</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Variable app.securedb=app-module.html#securedb"><a title="app.securedb" class="py-name" href="#" onclick="return doclink('link-2', 'securedb', 'link-2');">securedb</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="app
+app.app" class="py-name" href="#" onclick="return doclink('link-3', 'app', 'link-0');">app</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module app.forms=app.forms-module.html"><a title="app.forms" class="py-name" href="#" onclick="return doclink('link-4', 'forms', 'link-4');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class app.forms.LoginForm=app.forms.LoginForm-class.html"><a title="app.forms.LoginForm" class="py-name" href="#" onclick="return doclink('link-5', 'LoginForm', 'link-5');">LoginForm</a></tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class app.forms.RegisterForm=app.forms.RegisterForm-class.html"><a title="app.forms.RegisterForm" class="py-name" href="#" onclick="return doclink('link-6', 'RegisterForm', 'link-6');">RegisterForm</a></tt> </tt>
+<a name="register"></a><div id="register-def"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/register'</tt><tt class="py-op">,</tt> <tt class="py-name">methods</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">'GET'</tt><tt class="py-op">,</tt> <tt class="py-string">'POST'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="register-toggle" onclick="return toggle('register');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="app.routes-module.html#register">register</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="register-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="register-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-docstring">""" Form for registering a user """</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt class="py-name">form</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="app.forms.RegisterForm" class="py-name" href="#" onclick="return doclink('link-7', 'RegisterForm', 'link-6');">RegisterForm</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">form</tt><tt class="py-op">.</tt><tt class="py-name">validate_on_submit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt id="link-8" class="py-name"><a title="app.securedb" class="py-name" href="#" onclick="return doclink('link-8', 'securedb', 'link-2');">securedb</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method app.SecureUserDB.adduser()=app.SecureUserDB-class.html#adduser"><a title="app.SecureUserDB.adduser" class="py-name" href="#" onclick="return doclink('link-9', 'adduser', 'link-9');">adduser</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Variable app.forms.LoginForm.username=app.forms.LoginForm-class.html#username,Variable app.forms.RegisterForm.username=app.forms.RegisterForm-class.html#username"><a title="app.forms.LoginForm.username
+app.forms.RegisterForm.username" class="py-name" href="#" onclick="return doclink('link-10', 'username', 'link-10');">username</a></tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">,</tt><tt class="py-name">form</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable app.forms.LoginForm.password=app.forms.LoginForm-class.html#password,Variable app.forms.RegisterForm.password=app.forms.RegisterForm-class.html#password"><a title="app.forms.LoginForm.password
+app.forms.RegisterForm.password" class="py-name" href="#" onclick="return doclink('link-11', 'password', 'link-11');">password</a></tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">flash</tt><tt class="py-op">(</tt><tt class="py-string">"Registration Completed"</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">redirect</tt><tt class="py-op">(</tt><tt class="py-name">url_for</tt><tt class="py-op">(</tt><tt class="py-string">'login'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'register.html'</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">'Register'</tt><tt class="py-op">,</tt> <tt class="py-name">form</tt><tt class="py-op">=</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="login"></a><div id="login-def"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/login'</tt><tt class="py-op">,</tt> <tt class="py-name">methods</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">'GET'</tt><tt class="py-op">,</tt> <tt class="py-string">'POST'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="login-toggle" onclick="return toggle('login');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="app.routes-module.html#login">login</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="login-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="login-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-docstring">""" Form for logging in a user """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-name">form</tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name"><a title="app.forms.LoginForm" class="py-name" href="#" onclick="return doclink('link-12', 'LoginForm', 'link-5');">LoginForm</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">form</tt><tt class="py-op">.</tt><tt class="py-name">validate_on_submit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-op">{</tt><tt class="py-string">'username'</tt><tt class="py-op">:</tt> <tt class="py-name">form</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="app.forms.LoginForm.username
+app.forms.RegisterForm.username" class="py-name" href="#" onclick="return doclink('link-13', 'username', 'link-10');">username</a></tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-14" class="py-name"><a title="app.securedb" class="py-name" href="#" onclick="return doclink('link-14', 'securedb', 'link-2');">securedb</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method app.SecureUserDB.checkpassword()=app.SecureUserDB-class.html#checkpassword"><a title="app.SecureUserDB.checkpassword" class="py-name" href="#" onclick="return doclink('link-15', 'checkpassword', 'link-15');">checkpassword</a></tt><tt class="py-op">(</tt><tt class="py-name">form</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="app.forms.LoginForm.username
+app.forms.RegisterForm.username" class="py-name" href="#" onclick="return doclink('link-16', 'username', 'link-10');">username</a></tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">,</tt><tt class="py-name">form</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="app.forms.LoginForm.password
+app.forms.RegisterForm.password" class="py-name" href="#" onclick="return doclink('link-17', 'password', 'link-11');">password</a></tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">redirect</tt><tt class="py-op">(</tt><tt class="py-name">url_for</tt><tt class="py-op">(</tt><tt class="py-string">'index'</tt><tt class="py-op">,</tt><tt class="py-name">user</tt><tt class="py-op">=</tt><tt class="py-name">u</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">            <tt class="py-name">flash</tt><tt class="py-op">(</tt><tt class="py-string">'Username or password is invalid'</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'login.html'</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">'Sign In'</tt><tt class="py-op">,</tt> <tt class="py-name">form</tt><tt class="py-op">=</tt><tt class="py-name">form</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="index"></a><div id="index-def"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-decorator">@</tt><tt class="py-decorator">app</tt><tt class="py-op">.</tt><tt class="py-name">route</tt><tt class="py-op">(</tt><tt class="py-string">'/index'</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="index-toggle" onclick="return toggle('index');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="app.routes-module.html#index">index</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="index-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="index-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-docstring">""" router for main page """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-name">sessionuser</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'user'</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-comment"># protect the username parameter</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">sessionuser</tt> <tt class="py-keyword">or</tt> <tt class="py-keyword">not</tt> <tt id="link-18" class="py-name"><a title="app.securedb" class="py-name" href="#" onclick="return doclink('link-18', 'securedb', 'link-2');">securedb</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method app.SecureUserDB.userexists()=app.SecureUserDB-class.html#userexists"><a title="app.SecureUserDB.userexists" class="py-name" href="#" onclick="return doclink('link-19', 'userexists', 'link-19');">userexists</a></tt><tt class="py-op">(</tt><tt class="py-name">sessionuser</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">sessionuser</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">'username'</tt><tt class="py-op">:</tt> <tt class="py-string">'Guest'</tt><tt class="py-op">}</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">messages</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-op">{</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">                <tt class="py-string">'body'</tt><tt class="py-op">:</tt> <tt class="py-string">'Welcome to the Super Secure Application\nPlease Register and sign in'</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-op">]</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">sessionuser</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">sessionuser</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">messages</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">{</tt><tt class="py-string">'body'</tt><tt class="py-op">:</tt> <tt class="py-string">"You are logged in!!!"</tt><tt class="py-op">}</tt><tt class="py-op">]</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render_template</tt><tt class="py-op">(</tt><tt class="py-string">'index.html'</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">'Home'</tt><tt class="py-op">,</tt> <tt class="py-name">user</tt><tt class="py-op">=</tt><tt class="py-name">sessionuser</tt><tt class="py-op">,</tt> <tt class="py-name">msgs</tt><tt class="py-op">=</tt><tt class="py-name">messages</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="app-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Sun May 27 18:05:30 2018
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

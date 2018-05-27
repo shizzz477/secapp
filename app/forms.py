@@ -8,6 +8,7 @@ import re
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, ValidationError
+import flask_login
 
 __all__ = [
     'LoginForm',
@@ -35,10 +36,7 @@ def strongpasswordcheck(form,field):
 
 def antiInjection(form,field):
     """if specified for the form field, will not allow users to input potentially malicious strings"""
-    xss = re.compile(r"[\'/™€¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾Ņ¿Àā~`()\-+={\}\[\]|;:\"<>,.]")
-    sqli =re.compile(r"[&|!~*%]")
-    if xss.search(field.data) or sqli.search(field.data):
-        raise ValidationError('Invalid XSS/SQLi related characters entered')
+    pass
 
 class LoginForm(FlaskForm):
     """Form and validation requirements for Login"""
