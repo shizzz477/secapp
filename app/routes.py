@@ -3,7 +3,7 @@
 
     this module is responsible for routing all requests in the application
 """
-from flask import flash, redirect, url_for, render_template, request, json
+from flask import flash, redirect, url_for, render_template, request, json, send_from_directory
 from app import app, securedb
 from app.forms import LoginForm, RegisterForm
 
@@ -35,7 +35,9 @@ def index():
     """ router for main page """
     sessionuser = request.args.get('user')
     # protect the username parameter
-    if not sessionuser or not securedb.userexists(sessionuser):
+    if sessionuser:
+        sessionuser = json.loads(sessionuser)
+    if not sessionuser or not securedb.userexists(sessionuser.get("username")):
         sessionuser = {'username': 'Guest'}
         messages = [
             {
@@ -43,7 +45,10 @@ def index():
             }
         ]
     else:
-        sessionuser = json.loads(sessionuser)
         messages = [{'body': "You are logged in!!!"}]
-
     return render_template('index.html', title='Home', user=sessionuser, msgs=messages)
+
+@app.route('/docs')
+def docs():
+    """ router for the documentation """
+    return redirect(url_for('docs'))

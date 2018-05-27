@@ -16,7 +16,7 @@ __all__ = [
     'login'
 ]
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config.from_object(Config)
 
 class SecureUserDB(object):

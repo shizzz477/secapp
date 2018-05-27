@@ -36,7 +36,10 @@ def strongpasswordcheck(form,field):
 
 def antiInjection(form,field):
     """if specified for the form field, will not allow users to input potentially malicious strings"""
-    pass
+    xss = re.compile(r"[\'/™€¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾Ņ¿Àā~`()\-+={\}\[\]|;:\"<>,.]")
+    sqli =re.compile(r"[&|!~*%]")
+    if xss.search(field.data) or sqli.search(field.data):
+        raise ValidationError('Invalid XSS/SQLi related characters entered')
 
 class LoginForm(FlaskForm):
     """Form and validation requirements for Login"""
