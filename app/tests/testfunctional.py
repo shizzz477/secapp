@@ -1,6 +1,6 @@
 """
 
-    Functional testing modules for the web application purpose of these tests is to focus on the functional aspects of application
+    Functional testing modules for the web application. purpose of these tests is to focus on the functional aspects of application
 
 """
 import unittest
